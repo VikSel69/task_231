@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+    <style>
+        .context {float: left; padding-left: 180px}
+        .columnTypeOne {float: left; width: 50px; padding-left: 50px}
+        .columnTypeTwo {float: left; width: 100px}
+        .columnTypeThree {float: left; width: 60px}
+        .batton {float: left; padding-left: 50px}
+    </style>
+</head>
+<body>
+
+<div>
+    <a class="context"><b>LIST OF USERS</b></a>
+</div>
+<br>
+<hr>
+<div>
+    <p class="columnTypeOne">ID</p>
+    <p class="columnTypeTwo">NAME</p>
+    <p class="columnTypeTwo">SURNAME</p>
+    <p class="columnTypeThree">YEAR</p>
+</div>
+<br>
+<br>
+<br>
+<div th:each="user : ${users}">
+    <a class="columnTypeOne" th:text="${user.getId()}"></a>
+    <a class="columnTypeTwo" th:text="${user.getName()}"></a>
+    <a class="columnTypeTwo" th:text="${user.getSurname()}"></a>
+    <a class="columnTypeThree" th:text="${user.getYearOfBirth()}"></a>
+    <form th:action="@{/users/{id}/(id=${user.getId()})}">
+        <input type="submit" value="Show">
+    </form>
+</div>
+<br>
+<hr>
+<form th:action="@{/users/new}">
+    <div class="batton">
+        <input type="submit" value="Create new user">
+    </div>
+</form>
+
+</body>
+</html>

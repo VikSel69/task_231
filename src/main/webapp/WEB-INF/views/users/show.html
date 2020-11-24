@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <style>
+        .context {float: left; padding-left: 180px}
+        .columnTypeOne {float: left; width: 50px; padding-left: 50px}
+        .columnTypeTwo {float: left; width: 100px}
+        .columnTypeThree {float: left; width: 60px}
+        .batton {float: left; padding-left: 50px}
+    </style>
+</head>
+<body>
+
+<div>
+    <a class="context"><b>USER</b></a>
+</div>
+<br>
+<hr/>
+<div>
+    <p class="columnTypeOne">ID</p>
+    <p class="columnTypeTwo">NAME</p>
+    <p class="columnTypeTwo">SURNAME</p>
+    <p class="columnTypeThree">YEAR</p>
+</div>
+<br>
+<br>
+<br>
+<div>
+    <a class="columnTypeOne" th:text="${user.getId()}"></a>
+    <a class="columnTypeTwo" th:text="${user.getName()}"></a>
+    <a class="columnTypeTwo" th:text="${user.getSurname()}"></a>
+    <a class="columnTypeThree" th:text="${user.getYearOfBirth()}"></a>
+</div>
+<br>
+<br>
+<hr>
+<div class="batton">
+    <form th:action="@{/users/{id}/edit(id=${user.getId()})}">
+        <input type="submit" value="Edit">
+    </form>
+</div>
+<div class="batton">
+    <form th:method="DELETE" th:action="@{/users/{id}(id=${user.getId()})}">
+        <input type="submit" value="Delete"/>
+    </form>
+</div>
+<div class="batton">
+    <form th:action="@{/users/}">
+        <input type="submit" value="Next">
+    </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+    <style>
+        .batton {float: left; padding-left: 50px}
+        .context {float: left; padding-left: 180px}
+        .block1 {float: left; width: 120px; padding-left: 50px}
+    </style>
+</head>
+<body>
+
+<div>
+    <a class="context"><b>UPDATE OF USERS</b></a>
+</div>
+<br>
+<hr>
+<br>
+<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}" id="name">
+    <div class="block1">
+        <label for="name">Enter name: </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" th:field="*{name}"/>
+        </label>
+    </div>
+    <br>
+    <div class="block1">
+        <label for="name">Enter surname: </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" th:field="*{surname}"/>
+        </label>
+    </div>
+    <br>
+    <div class="block1">
+        <label for="name">Enter year: </label>
+    </div>
+    <div>
+        <label>
+            <input type="text" th:field="*{yearOfBirth}">
+        </label>
+    </div>
+    <br>
+    <hr>
+    <div class="batton">
+        <input type="submit" value="Update"/>
+    </div>
+</form>
+<div class="batton">
+    <form th:action="@{/users/}">
+        <input type="submit" value="Next">
+    </form>
+</div>
+
+</body>
+</html>
