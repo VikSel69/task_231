@@ -3,7 +3,7 @@ package ru.ves.service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.ves.model.User;
-import ru.ves.DAO.UserRepository;
+import ru.ves.DAO.UserDAO;
 
 import java.util.List;
 
@@ -11,34 +11,34 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
+    private final UserDAO userDAO;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserServiceImpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @Override
     public void addUser(User user) {
-        userRepository.addUser(user);
+        userDAO.addUser(user);
     }
 
     @Override
     public void updateUser(User user) {
-        userRepository.updateUser(user);
+        userDAO.updateUser(user);
     }
 
     @Override
     public void deleteUserById(int id) {
-        userRepository.deleteUserById(id);
+        userDAO.deleteUserById(id);
     }
 
     @Override
     public User getUserById(int id) {
-        return userRepository.getUserById(id);
+        return userDAO.getUserById(id);
     }
 
     @Override
     public List<User> getAllUser() {
-        return userRepository.getAllUser();
+        return userDAO.getAllUser();
     }
 }
